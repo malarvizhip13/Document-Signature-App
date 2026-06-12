@@ -7,6 +7,7 @@
    const documentRoutes = require("./routes/documentRoutes");
    const app =express();
    const mongoDB=process.env.mongoDB_URL;
+     
    
 app.use(cors());
    app.use(express.urlencoded({extended:true}))
@@ -25,3 +26,5 @@ app.use("/api/docs", documentRoutes);
    app.listen(5000,()=>{
     console.log('server running')
    })
+   app.use("/api", require("./routes/docRoutes"));
+app.use("/uploads", express.static("uploads"));

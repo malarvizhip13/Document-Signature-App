@@ -4,6 +4,7 @@
    require ('dotenv').config();
 
    const authRoutes = require("./routes/authRoutes");
+   const documentRoutes = require("./routes/documentRoutes");
    const app =express();
    const mongoDB=process.env.mongoDB_URL;
    
@@ -18,6 +19,9 @@ app.use(express.json());
 .catch(()=>{
 console.log('no connction')
 })
+app.use("/uploads", express.static("uploads"));
+app.use("/api/docs", documentRoutes);
+
    app.listen(5000,()=>{
     console.log('server running')
    })

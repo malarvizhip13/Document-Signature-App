@@ -5,10 +5,10 @@
 
    const authRoutes = require("./routes/authRoutes");
    const documentRoutes = require("./routes/documentRoutes");
+   const signatureRoutes = require("./routes/signatureRoutes");
    const app =express();
    const mongoDB=process.env.mongoDB_URL;
      
-   
 app.use(cors());
    app.use(express.urlencoded({extended:true}))
 app.use(express.json());
@@ -22,9 +22,10 @@ console.log('no connction')
 })
 app.use("/uploads", express.static("uploads"));
 app.use("/api/docs", documentRoutes);
+app.use("/api/signatures", signatureRoutes);
 
    app.listen(5000,()=>{
     console.log('server running')
    })
-   app.use("/api", require("./routes/docRoutes"));
+   app.use("/api", require("./routes/documentRoutes"));
 app.use("/uploads", express.static("uploads"));

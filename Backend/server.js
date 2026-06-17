@@ -12,20 +12,23 @@
 app.use(cors());
    app.use(express.urlencoded({extended:true}))
 app.use(express.json());
-   app.use("/api/auth", authRoutes);
-    mongoose.connect(mongoDB)
-    .then(()=>{
-   console.log('mongodb connected')
-})
-.catch(()=>{
-console.log('no connction')
-})
+
 app.use("/uploads", express.static("uploads"));
+
+   app.use("/api/auth", authRoutes);
+
 app.use("/api/docs", documentRoutes);
 app.use("/api/signatures", signatureRoutes);
+
+mongoose.connect(mongoDB)
+  .then(() => {
+    console.log("mongodb connected");
+  })
+  .catch(() => {
+    console.log("no connection");
+  });
 
    app.listen(5000,()=>{
     console.log('server running')
    })
-   app.use("/api", require("./routes/documentRoutes"));
-app.use("/uploads", express.static("uploads"));
+   

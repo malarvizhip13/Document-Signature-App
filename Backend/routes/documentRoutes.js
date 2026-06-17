@@ -5,7 +5,7 @@ const Document = require("../models/Document");
 const router = express.Router();
 const { getAllDocs } = require("../controllers/docController");
 
-router.get("/docs", getAllDocs);
+router.get("/", getAllDocs);
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

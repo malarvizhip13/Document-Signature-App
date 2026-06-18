@@ -6,9 +6,10 @@
    const authRoutes = require("./routes/authRoutes");
    const documentRoutes = require("./routes/documentRoutes");
    const signatureRoutes = require("./routes/signatureRoutes");
+   
    const app =express();
    const mongoDB=process.env.mongoDB_URL;
-     
+    
 app.use(cors());
    app.use(express.urlencoded({extended:true}))
 app.use(express.json());

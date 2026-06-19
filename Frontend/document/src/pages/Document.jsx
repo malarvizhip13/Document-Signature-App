@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Documents = () => {
   const [docs, setDocs] = useState([]);
@@ -81,15 +82,15 @@ const handleDrag = (e) => {
     }}
     style={{ cursor: "pointer", marginBottom: "10px" }}
   >
-        📄 {doc.fileName}
+         {doc.fileName}
 
-        <a
-          href={`http://localhost:5000/${doc.filePath}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Open
-        </a>
+        <Link
+  to="/dashboard"
+  style={{ marginLeft: "10px", color: "blue" }}
+>
+  Open
+</Link>
+
       </div>
     ))}
 

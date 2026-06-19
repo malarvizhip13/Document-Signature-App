@@ -38,4 +38,6 @@ app.use("/api/status", statusRoutes);
    app.listen(5000,()=>{
     console.log('server running')
    })
+
+   
    

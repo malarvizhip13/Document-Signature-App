@@ -1,16 +1,18 @@
-import { useState } from 'react'
 import './App.css'
 import Documents from "./pages/Document";
+import PublicSign from "./pages/PublicSign";
+import { Routes, Route } from "react-router-dom";
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-       
-    <Documents/>
-
-    </>
-  )
+     <>
+     
+    <Routes>
+      <Route path="/" element={<Documents />} />
+      <Route path="/sign/:token" element={<PublicSign />} />
+    </Routes>
+     </>
+  );
 }
 
-export default App
+export default App;

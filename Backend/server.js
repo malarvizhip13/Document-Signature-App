@@ -6,7 +6,7 @@
    const authRoutes = require("./routes/authRoutes");
    const documentRoutes = require("./routes/documentRoutes");
    const signatureRoutes = require("./routes/signatureRoutes");
-   
+   const emailRoutes = require("./routes/emailRoutes");
    const app =express();
    const mongoDB=process.env.mongoDB_URL;
     
@@ -20,7 +20,7 @@ app.use("/uploads", express.static("uploads"));
 
 app.use("/api/docs", documentRoutes);
 app.use("/api/signatures", signatureRoutes);
-
+app.use("/api/email", emailRoutes);
 mongoose.connect(mongoDB)
   .then(() => {
     console.log("mongodb connected");

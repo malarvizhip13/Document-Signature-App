@@ -8,7 +8,7 @@
    const signatureRoutes = require("./routes/signatureRoutes");
    const emailRoutes = require("./routes/emailRoutes");
    const auditRoutes = require("./routes/auditRoutes");
-   
+   const statusRoutes = require("./routes/statusRoutes");
    const app =express();
   
     
@@ -24,6 +24,7 @@ app.use("/api/docs", documentRoutes);
 app.use("/api/signatures", signatureRoutes);
 app.use("/api/email", emailRoutes);
 app.use("/api/audit", auditRoutes);
+app.use("/api/status", statusRoutes);
  const mongoDB=process.env.mongoDB_URL;
 
  mongoose.connect(mongoDB)

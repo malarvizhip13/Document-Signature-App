@@ -5,12 +5,11 @@ const fs = require("fs");
 const { PDFDocument } = require("pdf-lib");
 
 const router = express.Router();
-
-router.post("/sign", async (req, res) => {
+const auditLogger = require("../middleware/auditLogger");
+router.post("/sign",  auditLogger,async (req, res) => {
 
  try {
     console.log("SIGN API HIT");
-
 const path = require("path");
 
 const filePath = path.join(__dirname, "../input.pdf");
@@ -34,8 +33,8 @@ const existingPdfBytes = fs.readFileSync(filePath);
     file: "signed-output.pdf"
   });
  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Error signing PDF" });
+    console.log("PDF error",error);
+    res.status(500).json({ message: "Error signing PDF".message });
   }
 });
 

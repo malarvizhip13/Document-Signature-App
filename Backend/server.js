@@ -7,8 +7,10 @@
    const documentRoutes = require("./routes/documentRoutes");
    const signatureRoutes = require("./routes/signatureRoutes");
    const emailRoutes = require("./routes/emailRoutes");
+   const auditRoutes = require("./routes/auditRoutes");
+   
    const app =express();
-   const mongoDB=process.env.mongoDB_URL;
+  
     
 app.use(cors());
    app.use(express.urlencoded({extended:true}))
@@ -21,12 +23,15 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/docs", documentRoutes);
 app.use("/api/signatures", signatureRoutes);
 app.use("/api/email", emailRoutes);
-mongoose.connect(mongoDB)
+app.use("/api/audit", auditRoutes);
+ const mongoDB=process.env.mongoDB_URL;
+
+ mongoose.connect(mongoDB)
   .then(() => {
     console.log("mongodb connected");
   })
-  .catch(() => {
-    console.log("no connection");
+  .catch((err) => {
+    console.log("no connection",error);
   });
 
    app.listen(5000,()=>{
